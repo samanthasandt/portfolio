@@ -13,12 +13,13 @@
         }
 
         :root {
-            --bg-color: #0a192f;
-            --card-bg: #112240;
-            --text-color: #e6f1ff;
-            --accent-color: #FF7F50;
-            --dim-text: #8892b0;
-            --border-color: #233554;
+            /* Palette: Navy & Coral */
+            --bg-color: #0a192f;       /* Deep Navy */
+            --card-bg: #112240;        /* Slightly lighter Navy for contrast */
+            --text-color: #e6f1ff;     /* Off-white/Ice blue */
+            --accent-color: #FF7F50;   /* Coral */
+            --dim-text: #8892b0;       /* Muted blue-grey */
+            --border-color: #233554;   /* Border Navy */
             --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
@@ -40,6 +41,16 @@
             color: var(--accent-color);
         }
 
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* --- LAYOUT UTILITIES --- */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -59,13 +70,14 @@
             border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
-            background: rgba(10, 25, 47, 0.95);
+            background: rgba(10, 25, 47, 0.95); /* Glassy Navy */
             z-index: 100;
         }
 
         .logo {
             font-weight: 800;
             font-size: 1.2rem;
+            letter-spacing: 0.5px;
             color: var(--accent-color);
             text-transform: uppercase;
         }
@@ -73,12 +85,12 @@
         nav ul {
             display: flex;
             gap: 30px;
-            list-style: none;
         }
 
         nav a {
             font-size: 0.9rem;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
             font-weight: 600;
         }
 
@@ -94,42 +106,64 @@
         .hero-content h1 {
             font-size: 3.5rem;
             font-weight: 700;
+            line-height: 1.1;
             margin-bottom: 25px;
+            letter-spacing: -1px;
         }
 
         .hero-content p {
             font-size: 1.2rem;
             color: var(--dim-text);
+            max-width: 500px;
             margin-bottom: 30px;
         }
 
-        .cta-btn {
+        .hero-content .cta-btn {
             display: inline-block;
             border: 1px solid var(--accent-color);
             color: var(--accent-color);
             padding: 12px 24px;
             border-radius: 4px;
             text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .hero-content .cta-btn:hover {
+            background-color: rgba(255, 127, 80, 0.1);
+        }
+
+        .hero-image-wrapper {
+            position: relative;
         }
 
         .hero-image-wrapper img {
             border-radius: 8px;
             border: 2px solid var(--border-color);
+            filter: grayscale(20%); /* Artistic touch */
+            transition: filter 0.3s;
+            max-height: 500px;
+            object-fit: cover;
             width: 100%;
         }
 
-        /* --- MARQUEE --- */
+        .hero-image-wrapper img:hover {
+            filter: grayscale(0%);
+        }
+
+        /* --- MARQUEE (SCROLLING TEXT) --- */
         .marquee-container {
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
             overflow: hidden;
-            background: var(--card-bg);
+            white-space: nowrap;
             padding: 25px 0;
+            background: var(--card-bg);
         }
 
         .marquee-content {
             display: inline-block;
-            white-space: nowrap;
             animation: marquee 25s linear infinite;
         }
 
@@ -140,7 +174,7 @@
             margin-right: 60px;
             text-transform: uppercase;
             color: transparent;
-            -webkit-text-stroke: 1px var(--accent-color);
+            -webkit-text-stroke: 1px var(--accent-color); /* Coral Outline */
         }
 
         @keyframes marquee {
@@ -148,7 +182,19 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* --- PROJECTS --- */
+        /* --- PORTFOLIO LIST --- */
+        .projects-header {
+            margin-bottom: 60px;
+            border-bottom: 1px solid var(--accent-color);
+            padding-bottom: 20px;
+            display: inline-block;
+        }
+
+        .projects-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+        }
+
         .project-card {
             display: grid;
             grid-template-columns: 0.5fr 1.5fr 1fr;
@@ -157,42 +203,75 @@
             border-bottom: 1px solid var(--border-color);
         }
 
+        .project-card:last-of-type {
+            border-bottom: none;
+        }
+
         .project-number {
+            font-size: 1.2rem;
             font-family: monospace;
             color: var(--accent-color);
         }
 
+        .project-main {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
         .project-title {
             font-size: 2.2rem;
-            margin-bottom: 15px;
+            font-weight: 600;
+            color: var(--text-color);
         }
 
         .project-meta-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-            background: rgba(255, 255, 255, 0.05);
             padding: 20px;
+            background-color: rgba(255, 255, 255, 0.05); /* Subtle box */
             border-radius: 4px;
-            margin-bottom: 20px;
         }
 
         .meta-item h4, .project-desc h4 {
             font-size: 0.75rem;
-            color: var(--accent-color);
             text-transform: uppercase;
-            margin-bottom: 5px;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            font-weight: 700;
         }
 
+        .meta-item p, .project-desc p {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        .project-desc p {
+            color: var(--dim-text);
+        }
+
+        /* Instagram Embed Container styling */
         .project-visual {
             display: flex;
             justify-content: center;
+            align-items: flex-start;
+        }
+        
+        iframe.instagram-media {
+            border-radius: 8px !important;
+            border: 1px solid var(--border-color) !important;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+            min-width: unset !important; /* Fix generic layout issues */
+            width: 100% !important;
         }
 
-        /* --- CONTACT --- */
+        /* --- CONTACT SECTION --- */
         .contact-section {
-            background: var(--card-bg);
+            background-color: var(--card-bg);
             padding: 80px 0;
+            border-top: 1px solid var(--border-color);
         }
 
         .contact-grid {
@@ -201,28 +280,112 @@
             gap: 60px;
         }
 
+        .contact-info h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-details {
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--dim-text);
+        }
+        
+        .contact-item strong {
+            color: var(--accent-color);
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        /* FORM STYLING */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            letter-spacing: 1px;
+        }
+
         input, textarea {
-            width: 100%;
-            background: var(--bg-color);
+            background-color: var(--bg-color);
             border: 1px solid var(--border-color);
             padding: 15px;
-            color: white;
-            margin-bottom: 15px;
+            color: var(--text-color);
+            font-family: inherit;
+            font-size: 1rem;
             border-radius: 4px;
         }
 
-        button {
-            background: transparent;
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        button[type="submit"] {
+            background-color: transparent;
             border: 1px solid var(--accent-color);
             color: var(--accent-color);
             padding: 15px 30px;
-            cursor: pointer;
+            font-size: 1rem;
             text-transform: uppercase;
+            cursor: pointer;
+            align-self: flex-start;
+            transition: background 0.3s;
+            margin-top: 10px;
         }
 
+        button[type="submit"]:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            color: var(--dim-text);
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
-            .hero, .project-card, .contact-grid { grid-template-columns: 1fr; }
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content p { margin: 0 auto 30px; }
+
+            .project-card {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
             .project-number { display: none; }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -242,7 +405,7 @@
     <section id="about" class="hero container">
         <div class="hero-content">
             <h1>Orchestrating experiences that shift local economies.</h1>
-            <p>I'm Samantha Sandt, an Event Director specializing in large-scale festivals, vendor markets, and city-wide activations in Denver.</p>
+            <p>I'm Samantha Sandt, an Event Director specializing in large-scale festivals, vendor markets, and city-wide activations in the Denver Metro area.</p>
             <a href="#contact" class="cta-btn">Work With Me</a>
         </div>
         <div class="hero-image-wrapper">
@@ -256,25 +419,51 @@
             <span class="marquee-item">Community Partnerships</span>
             <span class="marquee-item">City Permitting</span>
             <span class="marquee-item">Sponsorship Strategy</span>
+            <span class="marquee-item">Brand Activation</span>
+            <span class="marquee-item">Vendor Coordination</span>
+            <span class="marquee-item">Logistics</span>
             <span class="marquee-item">Event Production</span>
             <span class="marquee-item">Community Partnerships</span>
+            <span class="marquee-item">City Permitting</span>
+            <span class="marquee-item">Sponsorship Strategy</span>
+            <span class="marquee-item">Brand Activation</span>
+            <span class="marquee-item">Vendor Coordination</span>
+            <span class="marquee-item">Logistics</span>
         </div>
     </div>
 
     <section id="work" class="container section-padding">
-        
+        <div class="projects-header">
+            <h2>Selected Works</h2>
+        </div>
+
         <article class="project-card">
             <div class="project-number">01</div>
             <div class="project-main">
                 <h3 class="project-title">16th Street Grand BAZAAR</h3>
+                
                 <div class="project-meta-grid">
-                    <div class="meta-item"><h4>Context</h4><p>16th Street Mall Re-Launch</p></div>
-                    <div class="meta-item"><h4>Scale</h4><p>100,000+ Attendees</p></div>
+                    <div class="meta-item">
+                        <h4>Context</h4>
+                        <p>5 Blocks on 16th Street Mall</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Scale</h4>
+                        <p>100,000+ Attendees</p>
+                    </div>
                 </div>
+
                 <div class="project-desc">
-                    <p>Managed safety protocols and built high-capacity bar infrastructure for Denver's most iconic thoroughfare.</p>
+                    <h4>The Heavy Lifting</h4>
+                    <p>Partnered with Downtown Denver Partnership for the Mall renovation re-launch. Managed safety protocols with the City, built "The Wonderful Bar" infrastructure, and entertainment.</p>
+                </div>
+
+                <div class="project-desc">
+                    <h4>Revenue/Partnership Win</h4>
+                    <p>Successfully launched the renovated district. Invited back to operate monthly beer gardens to maintain momentum.</p>
                 </div>
             </div>
+            
             <div class="project-visual">
                 <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DKfUCBmibP9/" data-instgrm-version="14"></blockquote>
             </div>
@@ -283,17 +472,32 @@
         <article class="project-card">
             <div class="project-number">02</div>
             <div class="project-main">
-                <h3 class="project-title">TheBigWonderful 10 Year</h3>
+                <h3 class="project-title">TheBigWonderful 10 Year Anniversary</h3>
+                
                 <div class="project-meta-grid">
-                    <div class="meta-item"><h4>Context</h4><p>RiNo Art District</p></div>
-                    <div class="meta-item"><h4>Scale</h4><p>5,000+ Attendees</p></div>
+                    <div class="meta-item">
+                        <h4>Context</h4>
+                        <p>Larimer Street (28th to 30th)</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Scale</h4>
+                        <p>5,000+ Attendees, 100+ Vendors</p>
+                    </div>
                 </div>
+
                 <div class="project-desc">
-                    <p>Coordinated multi-block street closures and integrated local tenants into the event ecosystem.</p>
+                    <h4>The Heavy Lifting</h4>
+                    <p>Orchestrated community partnerships with Larimer Street Project and tenants. Oversaw vendor coordination, marketing, sponsorships, ticketing, staffing, and waste management.</p>
+                </div>
+                
+                <div class="project-desc">
+                    <h4>Revenue/Partnership Win</h4>
+                    <p>Integrated block tenants directly into the event ecosystem. Ratio Beerworks won the People's Choice award, solidifying local business buy-in.</p>
                 </div>
             </div>
+            
             <div class="project-visual">
-                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C__vT9CoIn9/" data-instgrm-version="14"></blockquote>
+               <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C__vT9CoIn9/" data-instgrm-version="14"></blockquote> 
             </div>
         </article>
 
@@ -301,14 +505,29 @@
             <div class="project-number">03</div>
             <div class="project-main">
                 <h3 class="project-title">BANANASFEST</h3>
+                
                 <div class="project-meta-grid">
-                    <div class="meta-item"><h4>Context</h4><p>LoHi Activation</p></div>
-                    <div class="meta-item"><h4>Scale</h4><p>3,000+ Total Attendees</p></div>
+                    <div class="meta-item">
+                        <h4>Context</h4>
+                        <p>Larimer Sq (Y1) & LoHi (Y2)</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Scale</h4>
+                        <p>3,000+ Total (1,000+ Tourists)</p>
+                    </div>
                 </div>
+
                 <div class="project-desc">
-                    <p>Scaled a niche brand 3x in one year with global fan engagement and record-breaking philanthropy.</p>
+                    <h4>The Heavy Lifting</h4>
+                    <p>Created unique activations to match the podcast's energy, including world record events for charity (I Support the Girls), talent shows, and a 1K march. Managed a 3x expansion in Year 2.</p>
+                </div>
+
+                <div class="project-desc">
+                    <h4>Revenue/Partnership Win</h4>
+                    <p>Created a "third place" for a digital fanbase. High return rate of attendees flying in annually to reunite with friends made at previous events.</p>
                 </div>
             </div>
+            
             <div class="project-visual">
                 <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C_0sImcvYbr/" data-instgrm-version="14"></blockquote>
             </div>
@@ -318,14 +537,29 @@
             <div class="project-number">04</div>
             <div class="project-main">
                 <h3 class="project-title">Denver BAZAAR</h3>
+                
                 <div class="project-meta-grid">
-                    <div class="meta-item"><h4>Context</h4><p>Citywide Markets</p></div>
-                    <div class="meta-item"><h4>Scale</h4><p>$100K Annual Sponsorship</p></div>
+                    <div class="meta-item">
+                        <h4>Context</h4>
+                        <p>Roaming (RiNo, Sloan's, etc)</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Scale</h4>
+                        <p>20 Events/Year, 1K-5K each</p>
+                    </div>
                 </div>
+
                 <div class="project-desc">
-                    <p>Developed a "plug-and-play" operational model for rotating neighborhood activations.</p>
+                    <h4>The Heavy Lifting</h4>
+                    <p>Adaptable production strategy per neighborhood. Secured community partnerships, managed bar programs, staffing, and marketing oversight.</p>
+                </div>
+
+                <div class="project-desc">
+                    <h4>Revenue/Partnership Win</h4>
+                    <p>Consistent high-value sponsorship generation, averaging $100K in sponsorship revenue through the BAZAAR brand.</p>
                 </div>
             </div>
+            
             <div class="project-visual">
                 <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DGEam-RvRHf/" data-instgrm-version="14"></blockquote>
             </div>
@@ -334,28 +568,60 @@
     </section>
 
     <section id="contact" class="contact-section">
-        <div class="container contact-grid">
-            <div class="contact-info">
-                <h2>Let's create something memorable.</h2>
-                <div style="margin-top:20px;">
-                    <p><strong>Email:</strong> samanthasandt@gmail.com</p>
-                    <p><strong>Phone:</strong> 720-325-9835</p>
+        <div class="container">
+            <div class="contact-grid">
+                
+                <div class="contact-info">
+                    <h2>Let's create something memorable.</h2>
+                    <p>Available for contract roles, consulting, and full-time opportunities.</p>
+                    
+                    <div class="contact-details">
+                        <span class="contact-item">
+                            <strong>Email</strong>
+                            <a href="mailto:samanthasandt@gmail.com">samanthasandt@gmail.com</a>
+                        </span>
+                        <span class="contact-item">
+                            <strong>Phone</strong>
+                            <a href="tel:7203259835">720-325-9835</a>
+                        </span>
+                        <span class="contact-item">
+                            <strong>Location</strong>
+                            Denver, Colorado
+                        </span>
+                    </div>
                 </div>
-            </div>
-            <div class="contact-form">
-                <form action="mailto:samanthasandt@gmail.com" method="post" enctype="text/plain">
-                    <input type="text" placeholder="Name" required>
-                    <input type="email" placeholder="Email" required>
-                    <textarea rows="4" placeholder="Message" required></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
+
+                <div class="contact-form">
+                    <form action="mailto:samanthasandt@gmail.com" method="post" enctype="text/plain">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                        </div>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+
             </div>
         </div>
     </section>
 
+    <footer>
+        <div class="container">
+            &copy; 2026 Samantha Sandt. All Rights Reserved.
+        </div>
+    </footer>
+
     <script async src="//www.instagram.com/embed.js"></script>
     <script>
-        // Forces Instagram to re-process embeds after page load
+        // Fix for first videos not showing: Force re-processing on load
         window.onload = function() {
             if (window.instgrm) {
                 window.instgrm.Embeds.process();
